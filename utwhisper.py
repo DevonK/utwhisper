@@ -112,9 +112,8 @@ class Torrent:
 		# open token location
 		try:
 			response = urllib2.urlopen(token_location)
-		except:
-			print "[error]: error opening token page.\nCheck your settings at settings.py.\nexiting."
-			response.close()
+		except Exception as ex:
+			print "[error]: error opening token page.\n" + str(ex)
 			sys.exit(0)
 			
 		# get cookie

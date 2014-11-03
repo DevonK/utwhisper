@@ -11,6 +11,6 @@ Notes:
 Your utserver must be running.
 
 You must create a settings.py in the same directory containing keys:
-WEBUI: (string) url for the utserver web ui
+WEBUI: (string) url for the utserver web ui. Must have a trailing slash.
 USER, PASSWD: login details for the utserver web ui
 AUTH_SAVE_PATH: location to save auth token and cookie between runs
