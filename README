@@ -9,4 +9,8 @@ see doc/ for index.html too.
 
 Notes:
 Your utserver must be running.
-Edit settings.py (server, user, passwd).
+
+You must create a settings.py in the same directory containing keys:
+WEBUI: (string) url for the utserver web ui
+USER, PASSWD: login details for the utserver web ui
+AUTH_SAVE_PATH: location to save auth token and cookie between runs
