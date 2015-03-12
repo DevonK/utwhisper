@@ -1,4 +1,3 @@
-
 """
 Usage: utwhisper.py --[COMMAND] [OPTIONS]
 	options marked [*OPTIONS] are not mandatory.
@@ -551,8 +550,11 @@ class Executer:
 			'unpause': 'unpause',
 			'recheck': 'recheck',
 			'remove': 'remove',
+			'rm': 'remove',
 			'removedata': 'removedata',
+			'rmdata': 'removedata',
 			'removetorrent': 'removetorrent',
+			'rmtorrent': 'removetorrent',
 			'removedatatorrent': 'removedatatorrent',
 			'purge': 'removedatatorrent',
 			'setprio': 'setprio',
@@ -564,7 +566,8 @@ class Executer:
 			'listdirs': 'listdirs',
 			'request': 'request',
 			'hashtable': 'hashtable',
-			'help': 'see_help'
+			'help': 'see_help',
+			'?': 'see_help'
 		}
 
 		#print "[dbg]: console_input: " + str(console_input)
