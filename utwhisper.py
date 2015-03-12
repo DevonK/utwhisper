@@ -4,9 +4,13 @@ Usage: utwhisper.py --[COMMAND] [OPTIONS]
 	examples: utwhisper.py
 				--hashtable
 				--addurl http://thepiratebay.org/torrent
+				--list
+				--torrentslist
+				--?
 
-Commands:
---help -- print this
+Commands(alias) [OPTIONS]:
+--help(?)
+print this message
 
 --hashtable
 prints for each torrent it's hash, index, and name
@@ -14,7 +18,7 @@ prints for each torrent it's hash, index, and name
 --addurl [URL] [*DOWNLOAD_DIR (integer)] [*PATH]
 adds a torrent job from the given URL
 
---torrentslist
+--torrentslist(list)
 prints torrents list with their properties
 
 --getsettings
@@ -47,16 +51,16 @@ unpause torrent
 --recheck [INDEX]
 recheck the torrent contents for the specified torrent
 
---remove [INDEX]
+--remove(rm) [INDEX]
 remove the specified torrent from the torrent jobs list
 
---removedata [INDEX]
+--removedata(rmdata) [INDEX]
 remove the torrent from the jobs list and it's content
 
---removetorrent [INDEX]
+--removetorrent(rmtorrent) [INDEX] 
 remove the torrent from jobs list and the torrent file
 
---removedatatorrent [INDEX]
+--removedatatorrent(purge) [INDEX]
 remove torrent from the jobs list, it's content and torrent file
 
 --transferhistory
