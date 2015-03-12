@@ -1,3 +1,4 @@
 *.pyc
 authreuse
+settings.py
 *~
