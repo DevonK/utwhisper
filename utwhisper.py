@@ -181,7 +181,7 @@ class Torrent:
 			print "--------------------------------"
 		else:
 			for each in torrents:
-				print "index: {0}\nhash: {1}\ntorrent: {2}".format(index, each[0], each[2])
+				print "index: {0}\nhash: {1}\ntorrent: {2}".format(index, each[0].encode('utf-8'))
 				print "--------------------------------"
 				index += 1
 
@@ -397,7 +397,7 @@ class TorrentProperties:
 			{
 			'hash': each[0],
 			'status': each[1],
-			'name': each[2],
+			'name': each[2].encode('utf-8'),
 			'size': each[3],
 			'percent progress': each[4],
 			'downloaded': each[5],
@@ -406,7 +406,7 @@ class TorrentProperties:
 			'upload speed': each[8],
 			'download speed': each[9],
 			'eta': each[10],
-			'label': each[11],
+			'label': each[11].encode('utf-8'),
 			'peers connected': each[12],
 			'peers in swarm': each[13],
 			'seeds connected': each[14],
@@ -459,7 +459,7 @@ class TorrentFiles:
 		for each in files_json['files'][1]:
 			self.files.append(
 			{
-			'filename': each[0],
+			'filename': each[0].encode('utf-8'),
 			'filesize': each[1],
 			'downloaded': each[2],
 			'priority': each[3],
@@ -487,7 +487,7 @@ file: {1}
 size: {2}
 downloaded: {3}
 priority: {4}
-""".format(file_index, each['filename'], 
+""".format(file_index, each['filename'].encode('utf-8'), 
 		repr_size(each['filesize']), 
 		each['downloaded'], 
 		each['priority'])
@@ -505,7 +505,7 @@ class TorrentJob:
 	def print_props(self):
 		""" print torrent job properties """
 		# adjust output for your needs
-		print self.props['hash']
+		print self.props['hash'].encode('utf-8')
 		print self.props['trackers']
 	
 
