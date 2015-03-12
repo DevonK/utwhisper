@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 """
 Usage: utwhisper.py --[COMMAND] [OPTIONS]
@@ -540,6 +539,7 @@ class Executer:
 		# preffered command name -> method name (of Torrent class)
 		aliases = {
 			'torrentslist': 'torrents_list',
+			'list': 'torrents_list',
 			'getsettings': 'getsettings',
 			'getfiles': 'getfiles',
 			'setsettings': 'setsettings',
@@ -554,6 +554,7 @@ class Executer:
 			'removedata': 'removedata',
 			'removetorrent': 'removetorrent',
 			'removedatatorrent': 'removedatatorrent',
+			'purge': 'removedatatorrent',
 			'setprio': 'setprio',
 			'transferhistory': 'getxferhist',
 			'resettranserhistory': 'resetxferhist',
