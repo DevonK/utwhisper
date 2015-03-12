@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 """
 Usage: utwhisper.py --[COMMAND] [OPTIONS]
@@ -139,16 +140,41 @@ class Torrent:
 		""" all API goes thru this method """
 
 		opener = self.__set_opener()
-
-		# try to load previous token & cookie
+		
+		# testing if authreuse is usable
 		try:
 			authreuse = open(settings.AUTH_SAVE_PATH, "r")
 			token, cookie = authreuse.read().split("%")
-			#print "[dbg]: reusing:\nToken: {0}\nCookie: {1}\n".format(token, cookie)
+			#print "[dbg]: auth exists, reusing:\n  Token: {0}\n  Cookie: {1}\n".format(token, cookie)
 		except:
-			# token or cookie not reusable, requesting new
-			#print "[dbg]: request new token, cookie"
+			# token or cookie is not reusable, requesting new ones
+			#print "[dbg]: request new token and cookie:\n  Token: {0}\n  Cookie: {1}\n".format(token, cookie)
 			(token, cookie) = self.__token()
+			
+		target = self.__build_header(token, cookie, action)
+		# testing if authreuse is valid
+		try:
+			response = urllib2.urlopen(target)
+		except:
+			#print "\n[dbg]: auth failed...requesting new token and cookie"
+			(token, cookie) = self.__token()
+			target = self.__build_header(token, cookie, action)
+			#print "[dbg]: using new auth:\n  Token: {0}\n  Cookie: {1}\n".format(token, cookie)
+			try:
+				response = urllib2.urlopen(target)
+			except:
+				print "[error]: auth failed twice...aborting"
+				sys.exit(1)
+
+		# we got json
+		data = response.read()
+		#print "[dbg] Data size: %s\n" % (len(data))
+		return data
+
+	def __build_header(self, token, cookie, action):
+		''' Builds header for requests '''
+
+		opener = self.__set_opener()
 		
 		# since every request needs a cookie, put it into header.
 		opener.addheaders = [('Cookie', cookie)]
@@ -156,19 +182,8 @@ class Torrent:
 	
 		target = settings.WEBUI + "?token=" + token + action
 		#print "[dbg] Request ... " + target
-
-		try:
-			response = urllib2.urlopen(target)
-		except:
-			print "[error]: error opening {0}\nCleaning auth data at `{1}`. Try again now.\nexiting.".format(target, settings.AUTH_SAVE_PATH)
-			authreuse = open(settings.AUTH_SAVE_PATH, "w")
-			authreuse.close()
-			sys.exit(0)
-																				 
-		# we got json
-		data = response.read()
-		#print "[dbg] Data size: %s\n" % (len(data))
-		return data
+		
+		return target
 
 	def hashtable(self):
 		""" prints for each torrent it's hash, index and name """
