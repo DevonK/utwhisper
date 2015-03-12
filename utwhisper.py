@@ -181,7 +181,7 @@ class Torrent:
 			print "--------------------------------"
 		else:
 			for each in torrents:
-				print "index: {0}\nhash: {1}\ntorrent: {2}".format(index, each[0].encode('utf-8'))
+				print "index: {0}\nhash: {1}\ntorrent: {2}".format(index, each[0], each[2].encode('utf-8'))
 				print "--------------------------------"
 				index += 1
 
@@ -437,14 +437,18 @@ class TorrentProperties:
 index: {0}
 name: {1}
 size: {2}
-completed: {3}%
-status: {4}
+seeds: {3}
+speed: {4} Kb/s
+completed: {5}%
+status: {6}
 """.format(index, 
-		each['name'], 
-		repr_size(each['size']), 
-		float(each['percent progress']) / 10.0,
+	each['name'], 
+	repr_size(each['size']), 
+    each['seeds connected'],
+    int(((each['download speed'] / 1024) * 100) + 0.5) / 100,
+		float(each['percent progress']) / 10.00,
 		repr_status(each['status']))
-				index += 1
+			index += 1
 						
 
 		
