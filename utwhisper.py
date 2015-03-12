@@ -572,8 +572,9 @@ class Executer:
 		try:	
 			command = console_input[0]
 		except:
-			print "[error]: no command was supplied. exiting."
-			sys.exit(0)
+			command = 'torrentslist'
+			# print "[error]: no command was supplied. exiting."
+			# sys.exit(0)
 
 		try:	
 			options = console_input[1:]
