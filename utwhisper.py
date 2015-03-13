@@ -454,13 +454,16 @@ class TorrentProperties:
 index: {0}
 name: {1}
 size: {2}
-seeds: {3}
-speed: {4} Kb/s
-completed: {5}%
-status: {6}
+peers: {3}/{4}
+seeds: {5}
+speed: {6} Kb/s
+completed: {7}%
+status: {8}
 				""".format(index,
 					each['name'],
 					repr_size(each['size']),
+					each['peers connected'],
+					each['peers in swarm'],
 				    each['seeds connected'],
 				    int(((each['download speed'] / 1024) * 100) + 0.5) / 100,
 					float(each['percent progress']) / 10.00,
