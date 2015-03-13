@@ -458,20 +458,15 @@ seeds: {3}
 speed: {4} Kb/s
 completed: {5}%
 status: {6}
-""".format(index, 
-	each['name'], 
-	repr_size(each['size']), 
-    each['seeds connected'],
-    int(((each['download speed'] / 1024) * 100) + 0.5) / 100,
-		float(each['percent progress']) / 10.00,
-		repr_status(each['status']))
-			index += 1
-						
+				""".format(index,
+					each['name'],
+					repr_size(each['size']),
+				    each['seeds connected'],
+				    int(((each['download speed'] / 1024) * 100) + 0.5) / 100,
+					float(each['percent progress']) / 10.00,
+					repr_status(each['status']))
+				index += 1
 
-		
-
-		
-		
 class TorrentFiles:
 	""" Class contains properties for torrent files """
 	def __init__(self, files_json):
