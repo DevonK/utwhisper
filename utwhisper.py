@@ -449,7 +449,9 @@ class TorrentProperties:
 			print "No torrent jobs."
 		else:
 			index = 0
+			speed = 0
 			for each in self.torrents:
+				speed = speed +  int(((each['download speed'] / 1024) * 100) + 0.5) / 100
 				print """
 index: {0}
 name: {1}
@@ -469,6 +471,7 @@ status: {8}
 					float(each['percent progress']) / 10.00,
 					repr_status(each['status']))
 				index += 1
+			print "Total Speed: {0} kB/s ({1} mB/s)".format(speed, round(speed/1024.00,2))
 
 class TorrentFiles:
 	""" Class contains properties for torrent files """
